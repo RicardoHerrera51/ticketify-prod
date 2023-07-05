@@ -35,7 +35,7 @@ function Scanner() {
       }
       fetchTicketQr();
     }
-  }), [setTicket];
+  }), [setTicket, result];
 
   const handleDecode = (decodedResult) => {
     setResult(decodedResult)
