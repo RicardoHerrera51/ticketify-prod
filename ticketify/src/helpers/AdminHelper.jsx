@@ -285,3 +285,67 @@ export const deleteTier = async (id) => {
 
     return response.data;
 }
+
+// Involved
+export const getAllInvolved = async ({ size, page }) => {
+    const response = await axios.get(`${BASE_URL}involved/`,
+        {
+            headers: {
+                "Authorization": `Bearer ${getToken()}`
+            },
+            params: {
+                size: size,
+                page: page
+            }
+        });
+
+    const postResponse = await response.data;
+
+    return { items: postResponse, totalElements: postResponse.totalElements, totalPages: postResponse.totalPages, isNextPageAvailable: page + 1 < postResponse.totalPages }
+};
+
+export const getInvolvedById = async ({ id }) => {
+    const response = await axios.get(`${BASE_URL}involved/${id}`,
+        {
+            headers: {
+                "Authorization": `Bearer ${getToken()}`
+            },
+        });
+
+    const postResponse = await response.data;
+
+    return { items: postResponse, totalElements: postResponse.totalElements, totalPages: postResponse.totalPages, isNextPageAvailable: page + 1 < postResponse.totalPages }
+};
+
+export const createInvolved = async ({ id, involved, event }) => {
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("involved", involved);
+    formData.append("event", event);
+
+
+    const response = await axios.post(`${BASE_URL}involved/save`, formData,
+        {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                "Authorization": `Bearer ${getToken()}`
+            }
+        });
+
+    if (response.status === 200)
+        return response.data;
+    else {
+        console.log(response)
+    }
+}
+
+export const deleteInvolved = async (id) => {
+    const response = await axios.delete(`${BASE_URL}involved/delete/${id}`,
+        {
+            headers: {
+                "Authorization": `Bearer ${getToken()}`
+            }
+        });
+
+    return response.data;
+}

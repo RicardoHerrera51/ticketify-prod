@@ -1,10 +1,24 @@
 import { deleteTier } from "../../helpers/AdminHelper";
 import { allTierServices } from "../../services/TierServices";
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditButton from "../EditButton/EditButton"
 import { toast } from "react-toastify";
 
 const TierAdminCard = ({ tiers = [] }) => {
+
+    const onClickDelete = (id) => {
+        swal({
+            title: "Confirmar acción",
+            text: "Está apunto de borrar un registro permanentemente ¿Está seguro que desea continuar?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                deleteTier(id)
+            } 
+          });
+    }
 
     async function deleteTier(id) {
         try {
@@ -34,8 +48,7 @@ const TierAdminCard = ({ tiers = [] }) => {
                                 <p className='mb-2 text-dark-violet break-words'><b>Capacidad </b>{tier.capacity} personas</p>
                                 <p className='mb-2 text-dark-violet break-words'><b>Evento </b> {tier.event.title}</p>
                                 <div className='space-y-2 space-x-2 text-right h-max mt-4 '>
-                                    <EditButton />
-                                    <button onClick={() => deleteTier(tier.id)} className='rounded-lg bg-danger-red hover:bg-red-700 w-32 h-10 max-h-fit p-2 text-white md:text-sm my-auto font-montserrat' type='submit'>
+                                    <button onClick={() => onClickDelete(tier.id)} className='rounded-lg bg-danger-red hover:bg-red-700 w-32 h-10 max-h-fit p-2 text-white md:text-sm my-auto font-montserrat' type='submit'>
                                         <span><DeleteIcon className='mr-2 align-text-top' fontSize='small' />  Eliminar</span>
                                     </button>
                                 </div>

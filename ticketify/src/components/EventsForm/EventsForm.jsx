@@ -65,15 +65,14 @@ const EventsForm = ({ events = [], categories = [] }) => {
             if (title != '' && date != '' && hour != '' && place != '' && address != '' && category != '' && image != '') {
                 getCategoryId(eventCategory)
                 const response = await allEventServices.createEvent(title, IMAGE_URL, date, hour.toString(), place, address, category)
-    
+
                 if (!response.success) {
                     toast("Algo salió mal!!! Intentelo en otro momento", { type: "error" })
                     throw new Error("Algo salió mal !!! :/")
                 }
-    
+
                 toast('Evento creado correctamente', { type: 'success' })
                 setTitle('')
-                setStatus(true)
                 setImage('')
                 setDate('')
                 setHour('')
@@ -81,9 +80,10 @@ const EventsForm = ({ events = [], categories = [] }) => {
                 setAddress('')
                 setEventCategory('')
                 window.location.href("../event-admin")
+                window.location.reload()
 
             } else if (title != '' && date != '' && hour != '' && place != '' && address != '' && category != '' && image == '') {
-                toast("Seleccione una imagen, por favor", { type: "warning"})
+                toast("Seleccione una imagen, por favor", { type: "warning" })
             } else {
                 toast("Campos vacíos, favor completar formulario", { type: "warning" })
             }
@@ -159,14 +159,6 @@ const EventsForm = ({ events = [], categories = [] }) => {
                     <div className="w-full" id="fileUpload">
                         <label htmlFor="image" className="block mb-2 text-base text-dark-violet">Imagen</label>
                         <CloudinaryUploadWidget className="bg-pure-indigo" />
-                        
-                        {/*<FileInput
-                            helperText="Se sugiere añadir una imagen alusiva al evento"
-                            id="image"
-                            className="border border-dark-violet rounded-lg shadow-md hover:border-violet-700"
-                            onChange={(e) => onChange(e, setImage)}
-                            value={image}
-                    />*/}
                     </div>
 
                     <div className="flex justify-end mt-4">

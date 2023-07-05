@@ -1,8 +1,24 @@
 import { ToastContainer, toast } from "react-toastify";
 import { allCategoryServices } from "../../../services/CategoryServices";
 import DeleteIcon from '@mui/icons-material/Delete';
+import swal from 'sweetalert'
 
 const CategoriesRow = ({ categories = [] }) => {
+
+    const onClickDelete = (id) => {
+        swal({
+            title: "Confirmar acción",
+            text: "Está apunto de borrar un registro permanentemente ¿Está seguro que desea continuar?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                deleteCategory(id)
+            } 
+          });
+    }
 
     async function deleteCategory(id) {
         try {
@@ -32,7 +48,7 @@ const CategoriesRow = ({ categories = [] }) => {
                                 <p>{category.category}</p>
                             </th>
                             <td className='p-2 text-center'>
-                                <button onClick={() => deleteCategory(category.id)} className='rounded-lg bg-danger-red hover:bg-red-700 w-32 h-10 max-h-fit p-2 text-white md:text-sm my-auto font-montserrat' type='submit'>
+                                <button onClick={() => onClickDelete(category.id)} className='rounded-lg bg-danger-red hover:bg-red-700 w-32 h-10 max-h-fit p-2 text-white md:text-sm my-auto font-montserrat' type='submit'>
                                     <span><DeleteIcon className='mr-2 align-text-top' fontSize='small' />  Eliminar</span>
                                 </button>
                             </td>

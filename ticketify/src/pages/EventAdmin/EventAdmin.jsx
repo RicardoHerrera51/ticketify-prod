@@ -61,7 +61,7 @@ const EventAdmin = () => {
             }
         };
         fetchCategories();
-    }, [page, recharge]);
+    }, [page]);
 
     const next = () => {
         if (isNextPageAvailable) {
@@ -200,12 +200,12 @@ const EventAdmin = () => {
                 theme="colored"
             />
             <EventAdminCard events={events} />
-            <div className="text-center mx-auto">
-                <button className='rounded-lg left-2 bg-gray-700 hover:bg-gray-400 w-32 h-10 p-2 mr-4 text-white md:text-sm my-auto font-montserrat' onClick={prev}>
-                    <span><ArrowBackIcon /></span>  Anterior
+            <div className="text-center mx-auto mt-8">
+                <button className='rounded-full left-2 border border-pure-indigo bg-light-gray text-pure-indigo hover:bg-pure-indigo hover:text-white w-16 h-10 p-2 ml-4 md:text-sm my-auto font-montserrat' onClick={prev}>
+                    <span><ArrowBackIcon /></span>
                 </button>
-                <button className='rounded-lg left-2 bg-gray-700 hover:bg-gray-400 w-32 h-10 p-2 ml-4 text-white md:text-sm my-auto font-montserrat' onClick={next}>
-                    Siguiente <span><ArrowForwardIcon /></span>
+                <button className='rounded-full left-2 border border-pure-indigo bg-light-gray text-pure-indigo hover:bg-pure-indigo hover:text-white w-16 h-10 p-2 ml-4 md:text-sm my-auto font-montserrat' onClick={next}>
+                    <span><ArrowForwardIcon /></span>
                 </button>
             </div>
             <div className="grid grid-cols-1 p-4 mt-4 max-w-full">

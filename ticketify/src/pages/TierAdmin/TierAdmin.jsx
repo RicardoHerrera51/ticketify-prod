@@ -98,14 +98,6 @@ const TierAdmin = () => {
                 <h1 className="text-pure-indigo font-montserrat font-bold text-5xl">Localidades</h1>
             </div>
             <TierAdminCard tiers={tiers} className="w-full max-w-full p-2" />
-            <div className="text-center mx-auto mt-8">
-                <button className='rounded-lg left-2 bg-gray-700 hover:bg-gray-400 w-32 h-10 p-2 mr-4 text-white md:text-sm my-auto font-montserrat' onClick={prev}>
-                    <span><ArrowBackIcon /></span>  Anterior
-                </button>
-                <button className='rounded-lg left-2 bg-gray-700 hover:bg-gray-400 w-32 h-10 p-2 ml-4 text-white md:text-sm my-auto font-montserrat' onClick={next}>
-                    Siguiente <span><ArrowForwardIcon /></span>
-                </button>
-            </div>
             <div className="grid grid-cols-1 p-4 mt-4 max-w-full">
                 <h2 className="text-pure-indigo text-3xl font-montserrat">Agregar localidad</h2>
                 <hr className="mt-4 bg-penn-blue h-0.5" />

@@ -57,11 +57,6 @@ const EventAdminCard = ({ events = [] }) => {
                                 </p>
                                 <div className='space-y-2 space-x-2 text-right'>
                                     <button
-                                        className='rounded-lg left-2 bg-golden-yellow hover:bg-yellow-400 w-32 h-10 p-2 text-white md:text-sm my-auto font-montserrat'
-                                        type='button'>
-                                        <span><EditIcon className='mr-2 align-text-top' fontSize='small' /> Editar</span>
-                                    </button>
-                                    <button
                                         onClick={() => changeEventStatus(event.id)}
                                         className='rounded-lg bg-orange-600 hover:bg-orange-500 w-32 h-10 max-h-fit p-2 text-white md:text-sm my-auto font-montserrat'
                                         type='submit'>
