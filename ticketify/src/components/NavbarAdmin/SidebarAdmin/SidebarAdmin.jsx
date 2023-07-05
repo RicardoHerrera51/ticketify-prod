@@ -1,6 +1,15 @@
 import logo from '../../../assets/img/ticketifyLogo.png'
+import { useAppContext } from '../../context/AppContext'
+import { getToken } from '../../context/AppContext';
 
 const SidebarAdmin = () => {
+    const { logout } = useAppContext();
+
+    const logoutHandler = () => {
+        logout()
+        window.location.href = './login'
+    }
+
     return (
         <div>
             <ul className="absolute z-10 right-0 py-2 w-64 md:w-1/4 bg-penn-blue shadow-lg h-full font-montserrat">
@@ -59,6 +68,13 @@ const SidebarAdmin = () => {
                         Perfil
                     </a>
                 </li>
+                {getToken() ? (
+                    <li>
+                        <a onClick={logoutHandler} className="block px-4 py-2 text-sm text-white hover:bg-violet-blue">
+                            Cerrar sesion
+                        </a>
+                    </li>
+                ) : null}
                 <li className='absolute bottom-0 left-0'>
                     <a href="#" className="block px-4 py-2">
                         <img src={logo} className='w-32' />
