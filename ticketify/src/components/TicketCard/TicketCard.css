@@ -1,0 +1,19 @@
+@media screen and (max-width:639.9px ) {
+    #ticketImg{
+        width: 20rem
+        
+    }
+    
+    #ticketTitle{
+        font-size: 1.2rem;
+    }
+
+    #mainTicket{
+        flex-flow: column;
+        padding-top: 1rem;
+    }
+
+    #ticketButtonsContainer{
+        justify-content:center;
+    }
+}
