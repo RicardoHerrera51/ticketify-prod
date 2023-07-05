@@ -30,7 +30,7 @@ function Scanner() {
         // userFrom, userTo, ticket
         if (response.success) {
           setTicket(response);
-          requestTransactionQr(response.result.user.uuid, getId(), response.result.uuid):
+          requestTransactionQr(response.result.user.uuid, getId(), response.result.uuid);
         }
       }
       fetchTicketQr();
