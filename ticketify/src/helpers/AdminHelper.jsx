@@ -225,7 +225,7 @@ export const fetchAllTiers = async ({ tier, size, page }) => {
                 "Authorization": `Bearer ${getToken()}`
             },
             params: {
-                size: size, 
+                size: size,
                 page: page
             }
         });
@@ -349,3 +349,38 @@ export const deleteInvolved = async (id) => {
 
     return response.data;
 }
+
+// Orders
+export const getAllOrders = async ({ size, page }) => {
+    const response = await axios.get(`${BASE_URL}order/all`,
+        {
+            headers: {
+                "Authorization": `Bearer ${getToken()}`
+            },
+            params: {
+                size: size,
+                page: page
+            }
+        });
+
+    const postResponse = await response.data;
+    console.log(postResponse)
+
+    return { items: postResponse, totalElements: postResponse.totalElements, totalPages: postResponse.totalPages, isNextPageAvailable: page + 1 < postResponse.totalPages }
+};
+
+export const getOneOrderById = async ({ id }) => {
+    const formData = new FormData();
+    formData.append("id", id);
+
+    const response = await axios.get(`${BASE_URL}order/${id}`,
+        {
+            headers: {
+                "Authorization": `Bearer ${getToken()}`
+            },
+        });
+    console.log(response)
+
+    if (response.status === 200)
+        return response.data 
+};

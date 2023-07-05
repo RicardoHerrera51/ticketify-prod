@@ -79,7 +79,7 @@ const EventsForm = ({ events = [], categories = [] }) => {
                 setPlace('')
                 setAddress('')
                 setEventCategory('')
-                window.location.href("../event-admin")
+                //window.location.href("../event-admin")
                 window.location.reload()
 
             } else if (title != '' && date != '' && hour != '' && place != '' && address != '' && category != '' && image == '') {

@@ -22,8 +22,8 @@ const NavbarAdmin = () => {
                     <div className='flex w-auto h-full py-2 pl-3 pr-4'>
                     </div>
                 </div>
-                <div className='w-auto h-full relative'>
-                    <button onClick={toggleSidebar} type="button" className="md:absolute md:inset-y-4 md:right-0 md:mr-4 p-2 ml-4 text-sm text-white rounded-lg" aria-controls="navbar-hamburger" aria-expanded="false">
+                <div className='w-auto h-full relative text-right mr-2'>
+                    <button onClick={toggleSidebar} type="button" className="md:absolute md:inset-y-4 md:right-0 md:mr-4 p-2 mr-2 text-right text-sm text-white rounded-lg" aria-controls="navbar-hamburger" aria-expanded="false">
                         <span className="sr-only">Open main menu</span>
                         <img src={iconNav} className="h-4 w-5" alt="#" />
                     </button>
