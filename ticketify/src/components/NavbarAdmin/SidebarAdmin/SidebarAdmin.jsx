@@ -1,6 +1,5 @@
 import logo from '../../../assets/img/ticketifyLogo.png'
-import { useAppContext } from '../../context/AppContext'
-import { getToken } from '../../context/AppContext';
+import { useAppContext, getToken } from '../../../context/AppContext'
 
 const SidebarAdmin = () => {
     const { logout } = useAppContext();
