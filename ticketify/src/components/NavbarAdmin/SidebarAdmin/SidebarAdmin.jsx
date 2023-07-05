@@ -28,23 +28,8 @@ const SidebarAdmin = () => {
                     </a>
                 </li>
                 <li>
-                    <a href={'../users'} className="block px-4 py-2 text-sm text-white hover:bg-violet-blue">
-                        Usuarios
-                    </a>
-                </li>
-                <li>
-                    <a href={'../user-roles'} className="block px-4 py-2 text-sm text-white hover:bg-violet-blue">
-                        Permisos de usuarios
-                    </a>
-                </li>
-                <li>
                     <a href={'../organizers'} className="block px-4 py-2 text-sm text-white hover:bg-violet-blue">
                         Organizadores
-                    </a>
-                </li>
-                <li>
-                    <a href={'../sponsors'} className="block px-4 py-2 text-sm text-white hover:bg-violet-blue">
-                        Patrocinadores
                     </a>
                 </li>
                 <li>
@@ -53,18 +38,13 @@ const SidebarAdmin = () => {
                     </a>
                 </li>
                 <li>
+                    <a href={'../user-roles'} className="block px-4 py-2 text-sm text-white hover:bg-violet-blue">
+                        Permisos de usuarios
+                    </a>
+                </li>
+                <li>
                     <a href={'../statistics'} className="block px-4 py-2 text-sm text-white hover:bg-violet-blue">
                         Estadísticas
-                    </a>
-                </li>
-                <li>
-                    <a href={'../events'} className="block px-4 py-2 text-sm text-white hover:bg-violet-blue">
-                        Eventos
-                    </a>
-                </li>
-                <li>
-                    <a href={'../profile'} className="block px-4 py-2 text-sm text-white hover:bg-violet-blue">
-                        Perfil
                     </a>
                 </li>
                 {getToken() ? (

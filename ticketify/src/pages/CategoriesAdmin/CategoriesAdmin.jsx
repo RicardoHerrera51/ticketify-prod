@@ -55,10 +55,8 @@ const CategoriesAdmin = () => {
     async function searchCategory() {
         try {
             const response = await allCategoryServices.getCategoryByName(searchedCategory)
-            console.log(response.data)
             const data = []
             data.push(response.data)
-            console.log(data)
 
             if (!response.success) {
                 toast("No se encontró la categoría.", { type: 'warning' })
