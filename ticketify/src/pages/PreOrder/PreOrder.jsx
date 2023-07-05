@@ -8,6 +8,7 @@ import iconTicket from '../../assets/img/iconTicket.png'
 import arrowBack from '../../assets/img/arrowBack.png'
 import { useParams } from "react-router-dom";
 import { getEventByName } from '../../services/UserService';
+import moment from 'moment'
 
 function PreOrder() {
     const { code } = useParams();
@@ -33,7 +34,6 @@ function PreOrder() {
                 let response = await getEventByName(code);
                 if (response.success) {
                     setEvent(response.event);
-                    console.log(response)
                 }
             }
             fetchEvent();
@@ -47,7 +47,6 @@ function PreOrder() {
                 <img src={event?.event.image} alt="Imagen" className="h-60 w-full" />
             </div>
             <a href={'/events'}>
-
                 <div className="flex items-center m-4">
                     <img src={arrowBack} alt="Google" className="h-4 w-2 inline-block" />
                     <p className="text-pure-indigo text-l font-extralight m-2">Atras</p>
@@ -60,18 +59,18 @@ function PreOrder() {
                 <div className="p-2">
                     <div className="bg-pure-indigo rounded-full py-2 px-4 flex items-center">
                         <img src={iconCalendar} alt="Google" className="h-4 w-4 inline-block" />
-                        <p className="text-white font-normal inline-block ml-2">ABR 15, 2022</p>
+                        <p className="text-white font-normal inline-block ml-2">{moment(event?.event.date).format('YYYY-MM-DD')}</p>
                     </div>
                 </div>
                 <div className="p-2">
                     <div className="bg-pure-indigo rounded-full py-2 px-4 flex items-center">
                         <img src={iconClock} alt="Google" className="h-4 w-4 inline-block" />
-                        <p className="text-white font-normal inline-block ml-2">7:00 PM</p>
+                        <p className="text-white font-normal inline-block ml-2">{moment(event?.event.hour).format('HH:mm A')}</p>
                     </div>
                 </div>
             </div>
 
-            <p className="ml-4 font-normal text-lg">Localidades</p>
+            <p className="ml-4 font-semibold text-xl">Localidades</p>
 
             <div className="flex flex-wrap">
                 {event?.tiers?.map((ticket) => (
