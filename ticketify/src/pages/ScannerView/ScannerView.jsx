@@ -27,10 +27,10 @@ function Scanner() {
     if (ticket?.length == 0) {
       async function fetchTicketQr() {
         let response = await saveTicketQrScanner(result)
-        requestTransactionQr(response.result.user.uuid, getId(), response.result.uuid)
         // userFrom, userTo, ticket
         if (response.success) {
           setTicket(response);
+          requestTransactionQr(response.result.user.uuid, getId(), response.result.uuid):
         }
       }
       fetchTicketQr();
