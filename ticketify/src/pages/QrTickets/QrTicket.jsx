@@ -8,44 +8,33 @@ import moment from 'moment'
 
 function QrTicket() {
     const { ticket } = useParams();
-    const [qrData, setQRData] = useState('')
-    const [qr, setQr] = useState();
-    const [data, setData] = useState('');
+    const [qrValue, setQr] = useState();
     useEffect(() => {
-        if (!qr) {
+        if (!qrValue) {
             async function fetchQr() {
                 let response = await saveTicketQr(ticket);
                 if (response.success) {
                     setQr(response.result);
                 }
-                setData(response.result)
             }
-        fetchQr();
+            fetchQr();
         }
-    }), [setQr, setData];
-
-    useEffect(() => {
-        const qrCodeData = data.qr
-        console.log(data.qr)
-        setQRData(qrCodeData)
-    }, [setQRData, data])
+    }), [setQr];
 
     return (
         <div>
             <Navbar />
             <div className="flex flex-col items-center font-montserrat">
-                {qrData && (
-                    <div className="flex flex-col items-center m-4">
-                        <p className="text-center text-pure-indigo text-lg mb-2 font-semibold">Codigo Qr generado </p>
-                        <p className="text-center text-2xl mb-2 font-semibold">{qr?.eventName}</p>
-                        <p className='text-base'>{qr?.eventPlace} / {moment(qr?.creationDate).format('HH:mm A')}</p>
-                        <p className='font-semibold m-2 text-2xl' >{qr?.tierName}</p>
-                        <p className='font-semibold m-2 text-xl' >{qr?.qr}</p>
-                        <div className="flex justify-center m-6">
-                            <QRCode value={qr?.qr} />
-                        </div>
+                <div className="flex flex-col items-center m-4">
+                    <p className="text-center text-pure-indigo text-lg mb-2 font-semibold">Codigo Qr generado </p>
+                    <p className="text-center text-2xl mb-2 font-semibold">{qrValue?.eventName}</p>
+                    <p className='text-base'>{qrValue?.eventPlace} / {moment(qrValue?.creationDate).format('HH:mm A')}</p>
+                    <p className='font-semibold m-2 text-2xl' >{qrValue?.tierName}</p>
+                    <p className='font-semibold m-2 text-xl' >{qrValue?.qr}</p>
+                    <div className="flex justify-center m-6">
+                        <QRCode value={qrValue ? qrValue.qr : ""} />
                     </div>
-                )}
+                </div>
             </div>
             <div className='m-4'>
                 <p className='text-base font-light text-silver'>Este ticket es válido para el ingreso de UNA (1) persona para la localidad, fecha, hora y persona indicada por el mismo.</p>
