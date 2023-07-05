@@ -38,12 +38,6 @@ const TicketCard = ({ code, title, image, location, date, hour, event, chair}) =
                     </div>
                     
                     <div id='ticketButtonsContainer' className="flex flex-col justify-center ml-4">
-
-                        <a href={'/scanner'}>
-                        <button type="button" className="bg-pure-indigo text-white font-medium rounded-lg text-sm px-5 py-2.5 mb-2">
-                            TRANSFERIR
-                        </button>
-                        </a>
                         <a href={`/qrticket/${code}/`}>
                         <button type="button" className="bg-pure-indigo text-white font-medium rounded-lg text-sm px-5 py-2.5 mb-2">
                             GENERAR QR
