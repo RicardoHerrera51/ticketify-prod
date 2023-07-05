@@ -145,7 +145,7 @@ export const fetchTicketByUser = async () => {
 export const generateTicketQR = async (ticket) => {
   const response = await axios.post(`${BASE_URL}ticketqr/generate`, null, {
     params: {
-      'ticketid': ticket
+      'ticketId': ticket
     },
     headers: {
       'Content-Type': 'application/json',
@@ -183,7 +183,7 @@ export const saveTicketOrder = async (quantity, tier) => {
 export const ticketBuy = async (order) => {
   const response = await axios.post(`${BASE_URL}ticket/finish`, null, {
     params: {
-      'oderId': order
+      'OrderId': order
     },
     headers: {
       "Authorization": `Bearer ${getToken()}`
@@ -191,7 +191,6 @@ export const ticketBuy = async (order) => {
   });
 
   if (response.status === 200) {
-    //data o status
     const data = await response.data;
     return data;
   }
@@ -247,7 +246,6 @@ export const saveTransaction = async (code, emailTransfer) => {
   });
 
   if (response.status === 200) {
-    //data o status
     const data = await response.data;
     return data;
   }
