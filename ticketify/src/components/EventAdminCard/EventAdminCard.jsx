@@ -37,7 +37,7 @@ const EventAdminCard = ({ events = [] }) => {
     }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 place-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 place-items-center">
             {events.map((event) => {
                 return (
                     <div key={event.id} className='min-w-full max-w-xl px-8 py-4'>
