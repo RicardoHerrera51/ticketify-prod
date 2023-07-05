@@ -30,7 +30,7 @@ function Scanner() {
         // userFrom, userTo, ticket
         if (response.success) {
           setTicket(response);
-          requestTransactionQr(response.result.user.uuid, getId(), response.result.uuid);
+          requestTransactionQr(response.result.user.uuid, getId(), response.result.uuid)
         }
       }
       fetchTicketQr();
@@ -55,38 +55,30 @@ function Scanner() {
               onError={(error) => console.log(error?.message)}
             />
           ) : (
-            <div className="text-center w-full sm:w-3/4 md:w-1/2 lg:w-1/3 m-16">
-              <p className="text-2xl font-bold mb-4">¡Código QR reconocido!</p>
-              <p className="text-xl">Resultado: {result}</p>
-              <div
-                className="bg-white shadow-md rounded-lg p-10"
-              >
+            <div className="text-center mx-auto mt-16">
+              <p className="text-2xl font-bold mb-4 text-pure-indigo">¡Código QR reconocido!</p>
+              <p className="text-xl font-semibold">{result}</p>
+              <div className="bg-white shadow-md rounded-lg p-8 mt-8">
                 <div className="mb-6">
-                  <label
-                    className="block text-gray-700 text-lg font-normal mb-2"
-                    htmlFor="newPassword"
-                  >
-                    Codigo
+                  <label className="block text-gray-700 text-lg font-normal mb-2 text-left" htmlFor="newPassword">
+                    Código
                   </label>
                   <input
-                    className="peer placeholder-silver text-sm font-light h-10 w-full border shadow-sm rounded-lg border-gray-300 text-gray-900 focus:outline-none"
+                    className="peer placeholder-silver text-sm font-light h-12 w-full border border-gray-300 rounded-lg text-gray-900 focus:outline-none px-3"
                     id="code"
                     type="text"
-                    placeholder="Codigo"
+                    placeholder="Código"
                     name="code"
                     onChange={(e) => onChange(e, setCode)}
                     required
                   />
                 </div>
                 <div className="mb-6">
-                  <label
-                    className="block text-gray-700 text-lg font-normal mb-2"
-                    htmlFor="confirmPassword"
-                  >
-                    Correo 
+                  <label className="block text-gray-700 text-lg font-normal mb-2 text-left" htmlFor="newPassword">
+                    Correo
                   </label>
                   <input
-                    className="peer placeholder-silver text-sm font-light h-10 w-full border shadow-sm rounded-lg border-gray-300 text-gray-900 focus:outline-none"
+                    className="peer placeholder-silver text-sm font-light h-12 w-full border border-gray-300 rounded-lg text-gray-900 focus:outline-none px-3"
                     id="email"
                     type="email"
                     placeholder="Correo"
@@ -99,7 +91,7 @@ function Scanner() {
                 <div className="flex items-center justify-center">
                   <button
                     onClick={handleSubmit}
-                    className='bg-pure-indigo m-2 py-2 px-8 rounded-full p-3 text-center text-white font-light text-sm shadow-silver shadow-md'
+                    className="bg-pure-indigo m-2 py-2 px-8 rounded-full text-white font-light text-sm shadow-silver shadow-md"
                   >
                     Confirmar
                   </button>
